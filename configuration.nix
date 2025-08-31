@@ -48,6 +48,13 @@
     variant = "";
   };
 
+  # Desktop Environment
+  services.desktopManager = {
+    plasma6.enable = true;
+    sddm.enable = true;
+    sddm.wayland.enable = true;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.clay = {
     shell = pkgs.fish;
@@ -67,18 +74,21 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     nix-search-cli
     openssh
-    # Hyprland "taskbar"
-    waybar
-    # notifications
-    mako
-    # Required for mako
-    libnotify
-    # Wallpaper daemon
-    swww
+    # Desktop environment
+    kdePackages.kcalc
+    kdePackages.kclock
+    kdePackages.kolourpaint
+    kdePackages.ksystemlog
+    kdePackages.sddm-kcm # configuration module for SDDM (which is what...?)
+    kdePackages.isoimagewriter
+    kdePackages.partitionmanager
+    # Wayland stuff
+    #wl-clipboard # command line copy/paste (? maybe to copy TO terminal?)
+    #wayland-utils # no idea
     # Hyprland's default terminal
-    kitty
+    kitty # works great
     # Hyprland app launcher
-    rofi-wayland
+    #rofi-wayland works great
     # Firefox fork
     floorp
     # Network Manager applet (for the bar, I think?)
@@ -119,20 +129,6 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 
-
-  programs.hyprland = {
-    enable = true;
-    # nvidiaPatches = true; # causes error "no longer needed"
-    xwayland.enable = true;
-  };
-
-  environment.sessionVariables = {
-    # Prevents cursor from going invisible
-    WLR_NO_HARDWARE_CURSORS = "1";
-    # Tell Electron apps to use Wayland (like Discord)
-    NIXOS_OZONE_WL = "1";
-  };
-
   hardware = {
     # Renamed from opengl.enable
     graphics.enable = true;
@@ -149,10 +145,10 @@
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # Trying to get it to actually start!
-  services.xserver = {
-    enable = true;
-    videoDrivers = [ "nvidia" ];
-  };
+  #services.xserver = {
+  #  enable = true;
+  #  videoDrivers = [ "nvidia" ];
+  #};
 
   # Try to start with NumLock - breaks login?
   #services.xserver.displayManager.setupCommands = ''
@@ -161,7 +157,6 @@
 
   # Save off the config files for this generation
   environment.etc."current/nix".source=/etc/nixos/configuration.nix;
-  environment.etc."current/hyp".source=/home/clay/.config/hypr/hyprland.conf;
 
   # Configure some packages 
   # PROGRAMS.x requires Home Manager
