@@ -143,17 +143,6 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-  # Trying to get it to actually start!
-  #services.xserver = {
-  #  enable = true;
-  #  videoDrivers = [ "nvidia" ];
-  #};
-
-  # Try to start with NumLock - breaks login?
-  #services.xserver.displayManager.setupCommands = ''
-  #  ${pkgs.numlockx}/bin/numlockx on
-  #'';
-
   # Save off the config files for this generation
   environment.etc."current/nix".source=/etc/nixos/configuration.nix;
 
@@ -181,4 +170,7 @@
       ll = "ls -lah";
     };
   };
+
+  # FLAKES
+  nix.settings.experimental-features = [ "nix-command" "flakes" ]
 }

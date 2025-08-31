@@ -17,3 +17,5 @@ environment.etc."current/nix".source=/etc/nixos/configuration.nix;  # Copies the
 ## Kitty
 CTRL+SHIFT+C    Copy
 SHIFT+INSERT    Paste
+
+Jasi on NIXOS Matrix suggests reading https://nix.dev/tutorials/module-system/a-basic-module/ to learn about multiple DEs.
