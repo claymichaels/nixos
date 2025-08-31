@@ -97,8 +97,8 @@
     # Novelty terminal commands
     sl
     nyancat
-    # Steam
     steam
+    home-manager    
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
