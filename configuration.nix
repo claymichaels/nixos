@@ -76,6 +76,7 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     nix-search-cli
     openssh
+    tree
     # Desktop environment
     kdePackages.kcalc
     kdePackages.kclock
@@ -90,13 +91,9 @@
     # Hyprland's default terminal
     kitty # works great
     # Hyprland app launcher
-    #rofi-wayland works great
+    rofi-wayland # works great
     # Firefox fork
     floorp
-    # Network Manager applet (for the bar, I think?)
-    networkmanagerapplet
-    # window arrangement helper
-    nwg-displays
     # Novelty terminal commands
     sl
     nyancat
