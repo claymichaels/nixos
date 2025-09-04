@@ -10,12 +10,18 @@ sudo nixos-rebuild switch --profile-name "foo"  # I think I can use this to swit
 nix-search "foo"    # Search available packages
 nix-shell -p foo    # start a temporary shell with the package Foo. Useful for using one-off utilities
 
+
 # in configuration.nix
 environment.etc."current/nix".source=/etc/nixos/configuration.nix;  # Copies the config file into /etc so I can check which file created this generation
-
+# Don't do that! Flakes causes it to be more picky, and mentioning the actual filesystem seems to be a no-no. 
+QuadRadical in the Matrix chat sugggests using inputs.self instead. Will play.
 
 ## Kitty
 CTRL+SHIFT+C    Copy
 SHIFT+INSERT    Paste
 
+
+
+
 Jasi on NIXOS Matrix suggests reading https://nix.dev/tutorials/module-system/a-basic-module/ to learn about multiple DEs.
+
