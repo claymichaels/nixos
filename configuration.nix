@@ -144,8 +144,8 @@
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # Save off the config files for this generation
-  environment.etc."current/nix".source = /home/clay/my-repo/configuration.nix
-  environment.etc."current/flake".source = /home/clay/my-repo/flake.nix
+  environment.etc."current/nix".source = /home/clay/my-repo/configuration.nix;
+  environment.etc."current/flake".source = /home/clay/my-repo/flake.nix;
 
   # Configure some packages 
   # PROGRAMS.x requires Home Manager
