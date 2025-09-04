@@ -144,7 +144,8 @@
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # Save off the config files for this generation
-  environment.etc."current/nix".source=/etc/nixos/configuration.nix;
+  system.copySystemConfiguration = true;
+  # should copy the configuration.nix to /run/current-system/configuration.nix
 
   # Configure some packages 
   # PROGRAMS.x requires Home Manager
