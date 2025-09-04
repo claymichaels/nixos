@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+
     ];
 
   # Bootloader.
@@ -98,7 +99,8 @@
     sl
     nyancat
     steam
-    home-manager    
+    slack
+    libreoffice
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -143,7 +145,7 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-  # Configure some packages 
+  # Configure some packages
   # PROGRAMS.x requires Home Manager
   #programs.floorp = {
   #  enable = true;
