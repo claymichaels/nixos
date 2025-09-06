@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      #./home.nix
+      <home-manager/nixos>
     ];
 
   # Bootloader.
@@ -66,6 +66,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
+  home-manager.users.clay = ./home.nix
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
