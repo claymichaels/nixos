@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-
+      #./home.nix
     ];
 
   # Bootloader.
@@ -98,9 +98,9 @@
     # Novelty terminal commands
     sl
     nyancat
-    steam
     slack
     libreoffice
+    zoom
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -146,7 +146,6 @@
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # Configure some packages
-  # PROGRAMS.x requires Home Manager
   #programs.floorp = {
   #  enable = true;
   #};
@@ -169,7 +168,4 @@
       ll = "ls -lah";
     };
   };
-
-  # FLAKES
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }

@@ -1,1 +1,0 @@
-/home/clay/.config/home-manager/home.nix
