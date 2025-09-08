@@ -20,7 +20,7 @@
   home.packages = [
     pkgs.vlc
     pkgs.prismlauncher
-    pkgs.steam
+    #pkgs.steam
     (pkgs.writeShellScriptBin "nixstatus" ''
        echo "Hello, ${config.home.username}!"
        echo "Home-Manager is working"

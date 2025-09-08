@@ -72,7 +72,7 @@
     isNormalUser = true;
     description = "Play";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ ];
+    packages = with pkgs; [ KatalinK900 ];
   };
   home-manager.users.play = ./home-play.nix;
 
