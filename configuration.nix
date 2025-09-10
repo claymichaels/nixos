@@ -72,12 +72,15 @@
     isNormalUser = true;
     description = "Play";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ KatalinK900 ];
+    packages = with pkgs; [  ];
   };
   home-manager.users.play = ./home-play.nix;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  # Tell home-manager to use the same package sources as config.nix
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -100,7 +103,7 @@
     # Hyprland's default terminal
     kitty # works great
     # Hyprland app launcher
-    rofi-wayland # works great
+    #rofi-wayland # works great
     # Firefox fork
     floorp
   ];
@@ -169,5 +172,10 @@
     shellAliases = {
       ll = "ls -lah";
     };
+  };
+
+  programs.rofi = {
+    enable = true;
+    theme = "solarized";
   };
 }

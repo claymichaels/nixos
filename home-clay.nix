@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  imports = [ <plasma-manager/modules> ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "clay";
@@ -22,14 +23,9 @@
     # # "Hello, world!" when run.
     pkgs.hello
     pkgs.wget
-    openssh
-    slack
-    libreoffice
-    zoom
-    (pkgs.writeShellScriptBin "nixstatus" ''
-       echo "Hello, ${config.home.username}!"
-       echo "Home-Manager is working"
-     '')
+    pkgs.slack
+    pkgs.libreoffice
+    pkgs.zoom
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -65,21 +61,39 @@
   # shell provided by Home Manager. If you don't want to manage your shell
   # through Home Manager then you have to manually source 'hm-session-vars.sh'
   # located at either
-  #
   #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
   # or
-  #
   #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
   # or
-  #
   #  /etc/profiles/per-user/clay/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.plasma = {
+    enable = true;
+    workspace = {
+      clickItemTo = "open"; # single click open
+      lookandFeel = "org.kde.breezedark.desktop";
+      #wallpaper = "";
+    };
+    hotkeys.commands."launch-kitty" = {
+      name = "Launch Kitty terminal";
+      key = "Meta+A";
+      command = "kitty";
+    };
+    hotkeys.commands."launch-rofi" = {
+      name = "Open Rofi";
+      key = "Meta+S";
+      command = "rofi";
+    };
+    #panels = [
+    #  {
+    #    location = "left";
+    #  }
+    #];
+  };
 }
