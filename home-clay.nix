@@ -18,19 +18,12 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    pkgs.hello
     pkgs.wget
     pkgs.openssh
     pkgs.sqlitebrowser
-    #pkgs.slack
-    #pkgs.libreoffice
-    #pkgs.zoom
-    (pkgs.writeShellScriptBin "nixstatus" ''
-       echo "Hello, ${config.home.username}!"
-       echo "Home-Manager is working"
-     '')
+    pkgs.slack # There doesn't seem to be an option for this
+    pkgs.libreoffice # There doesn't seem to be an option for this
+    pkgs.zoom # There doesn't seem to be an option for this
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -84,11 +77,12 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # Make a .Desktop file for Sqlitebrowser
   xdg.desktopEntries.sqlitebrowser = {
     name = "Sqlite Browser";
     exec = "${pkgs.sqlitebrowser}/bin/sqlitebrowser";
   };
-
+  # Register SQLitebrowser as the default app for .sqlite3
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
@@ -100,5 +94,4 @@
     enable = true;
     theme = "/nix/store/4p8f4jz6a4qv7c4gmlm367vyfjvhnplk-rofi-1.7.9+wayland1/share/rofi/themes/solarized.rasi";
   };
-
 }

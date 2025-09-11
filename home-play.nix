@@ -20,11 +20,6 @@
   home.packages = [
     pkgs.vlc
     pkgs.prismlauncher
-    #pkgs.steam
-    (pkgs.writeShellScriptBin "nixstatus" ''
-       echo "Hello, ${config.home.username}!"
-       echo "Home-Manager is working"
-     '')
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -77,4 +72,9 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.steam = {
+    enable = true;
+    # extraCompatPackages = [ proton-ge-bin ]; example
+  };
 }
