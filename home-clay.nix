@@ -22,10 +22,11 @@
     # # "Hello, world!" when run.
     pkgs.hello
     pkgs.wget
-    openssh
-    slack
-    libreoffice
-    zoom
+    pkgs.openssh
+    pkgs.sqlitebrowser
+    #pkgs.slack
+    #pkgs.libreoffice
+    #pkgs.zoom
     (pkgs.writeShellScriptBin "nixstatus" ''
        echo "Hello, ${config.home.username}!"
        echo "Home-Manager is working"
@@ -82,4 +83,22 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  xdg.desktopEntries.sqlitebrowser = {
+    name = "Sqlite Browser";
+    exec = "${pkgs.sqlitebrowser}/bin/sqlitebrowser";
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/vnd.sqlite3" = "sqlitebrowser.desktop";
+    };
+  };
+
+  programs.rofi = {
+    enable = true;
+    theme = "/nix/store/4p8f4jz6a4qv7c4gmlm367vyfjvhnplk-rofi-1.7.9+wayland1/share/rofi/themes/solarized.rasi";
+  };
+
 }

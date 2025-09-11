@@ -59,8 +59,43 @@ Jasi on NIXOS Matrix suggests reading https://nix.dev/tutorials/module-system/a-
 
 # Errors seen
 
+*When running nixos-rebuilld*
+
 error: file 'plasma-manager/modules' was not found in the Nix search path (add it using $NIX_PATH or -I)
 Solution:
+
+*When running nixos-rebuilld*
+
+*Error:* Failed to start Home Manager environment for clay.
+
+*Link:*https://discourse.nixos.org/t/failed-to-start-home-manager-environment-for-user/50254
+
+*Solution:* Home-Manager doesn't want to overwrite a file
+
+journalctl -xe --unit home-manager-clay # To find out which file is already present
+
+Sep 10 17:18:25 nixos-pc hm-activate-clay[184905]: Starting Home Manager activation
+Sep 10 17:18:25 nixos-pc hm-activate-clay[184905]: Activating checkFilesChanged
+Sep 10 17:18:25 nixos-pc hm-activate-clay[184905]: Activating checkLinkTargets
+Sep 10 17:18:25 nixos-pc hm-activate-clay[184949]: Existing file '/home/clay/.config/rofi/config.rasi' is in the way of '/nix/store/385364a05la57cx2pi7j5bjmhwh972s4-home-manager-files/.config/rofi/config.rasi'
+Sep 10 17:18:25 nixos-pc hm-activate-clay[184949]: Please do one of the following:
+Sep 10 17:18:25 nixos-pc hm-activate-clay[184949]: - Move or remove the above files and try again.
+Sep 10 17:18:25 nixos-pc hm-activate-clay[184949]: - In standalone mode, use 'home-manager switch -b backup' to back up
+Sep 10 17:18:25 nixos-pc hm-activate-clay[184949]:   files automatically.
+Sep 10 17:18:25 nixos-pc hm-activate-clay[184949]: - When used as a NixOS or nix-darwin module, set
+Sep 10 17:18:25 nixos-pc hm-activate-clay[184949]:     'home-manager.backupFileExtension'
+Sep 10 17:18:25 nixos-pc hm-activate-clay[184949]:   to, for example, 'backup' and rebuild.
+
+In this case, I moved the ~/.config/rofi/config.rasi to config.rasi.backup, and it was replaced with a symlink to the home-manager store folder.
+
+When I added a new MIME type inorder to set a default application, (sqlitebrowser), it came up for /home/clay/.config/mimeapps.list.
+
+# Default apps
+
+After adding the pkgs.sqlitebrowser to home-manager, KDE didn't recognize it as the default app. 
+
+https://wiki.nixos.org/wiki/Default_applications
+
 
 # Git
 

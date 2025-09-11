@@ -25,6 +25,11 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # /etc/hosts
+  networking.hosts = {
+    "192.168.1.235" = ["pi"];
+  };
+
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -72,7 +77,7 @@
     isNormalUser = true;
     description = "Play";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ KatalinK900 ];
+    packages = with pkgs; [ slack libreoffice zoom ];
   };
   home-manager.users.play = ./home-play.nix;
 
@@ -94,13 +99,15 @@
     kdePackages.sddm-kcm # configuration module for SDDM (which is what...?)
     kdePackages.isoimagewriter
     kdePackages.partitionmanager
+    kdePackages.kio # Allow Dolphin to map remote servers with SFTP
+    kdePackages.kio-extras
     # Wayland stuff
     #wl-clipboard # command line copy/paste (? maybe to copy TO terminal?)
     #wayland-utils # no idea
     # Hyprland's default terminal
     kitty # works great
     # Hyprland app launcher
-    rofi-wayland # works great
+    #rofi-wayland # works great
     # Firefox fork
     floorp
   ];
@@ -170,4 +177,5 @@
       ll = "ls -lah";
     };
   };
+
 }
