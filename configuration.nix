@@ -72,14 +72,6 @@
     packages = with pkgs; [ ];
   };
   home-manager.users.clay = ./home-clay.nix;
-  users.users.play = {
-    shell = pkgs.fish;
-    isNormalUser = true;
-    description = "Play";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ slack libreoffice zoom ];
-  };
-  home-manager.users.play = ./home-play.nix;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -110,6 +102,14 @@
     #rofi-wayland # works great
     # Firefox fork
     floorp
+    slack
+    zoom
+    libreoffice
+    sqlitebrowser
+    openssh
+    wget
+    vlc
+    prismlauncher
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -178,4 +178,8 @@
     };
   };
 
+  programs.steam = {
+    enable = true;
+    # extraCompatPackages = [ proton-ge-bin ]; example
+  };
 }

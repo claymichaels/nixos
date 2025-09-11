@@ -18,13 +18,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    pkgs.wget
-    pkgs.openssh
-    pkgs.sqlitebrowser
-    pkgs.slack # There doesn't seem to be an option for this
-    pkgs.libreoffice # There doesn't seem to be an option for this
-    pkgs.zoom # There doesn't seem to be an option for this
-
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -77,6 +70,11 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  programs.rofi = {
+    enable = true;
+    theme = "/nix/store/4p8f4jz6a4qv7c4gmlm367vyfjvhnplk-rofi-1.7.9+wayland1/share/rofi/themes/solarized.rasi";
+  };
+
   # Make a .Desktop file for Sqlitebrowser
   xdg.desktopEntries.sqlitebrowser = {
     name = "Sqlite Browser";
@@ -90,8 +88,4 @@
     };
   };
 
-  programs.rofi = {
-    enable = true;
-    theme = "/nix/store/4p8f4jz6a4qv7c4gmlm367vyfjvhnplk-rofi-1.7.9+wayland1/share/rofi/themes/solarized.rasi";
-  };
 }
