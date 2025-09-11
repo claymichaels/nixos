@@ -69,9 +69,17 @@
     isNormalUser = true;
     description = "Clay";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ ];
+    packages = with pkgs; [ slack zoom libreoffice sqlitebrowser openssh wget ];
   };
   home-manager.users.clay = ./home-clay.nix;
+  users.users.play = {
+    shell = pkgs.fish;
+    isNormalUser = true;
+    description = "Play";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [  ];
+  };
+  home-manager.users.play = ./home-play.nix;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -102,12 +110,12 @@
     #rofi-wayland # works great
     # Firefox fork
     floorp
-    slack
-    zoom
-    libreoffice
-    sqlitebrowser
-    openssh
-    wget
+    #slack
+    #zoom
+    #libreoffice
+    #sqlitebrowser
+    #openssh
+    #wget
     vlc
     prismlauncher
   ];
@@ -178,8 +186,8 @@
     };
   };
 
-  programs.steam = {
-    enable = true;
-    # extraCompatPackages = [ proton-ge-bin ]; example
-  };
+  #programs.steam = {
+  #  enable = true;
+  #  # extraCompatPackages = [ proton-ge-bin ]; example
+  #};
 }

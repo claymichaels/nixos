@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "clay";
-  home.homeDirectory = "/home/clay";
+  home.username = "play";
+  home.homeDirectory = "/home/play";
 
   imports = [<plasma-manager/modules>];
 
@@ -92,17 +92,8 @@
     theme = "/nix/store/4p8f4jz6a4qv7c4gmlm367vyfjvhnplk-rofi-1.7.9+wayland1/share/rofi/themes/solarized.rasi";
   };
 
-  # Make a .Desktop file for Sqlitebrowser
-  xdg.desktopEntries.sqlitebrowser = {
-    name = "Sqlite Browser";
-    exec = "${pkgs.sqlitebrowser}/bin/sqlitebrowser";
-  };
-  # Register SQLitebrowser as the default app for .sqlite3
-  xdg.mimeApps = {
+  programs.steam = {
     enable = true;
-    defaultApplications = {
-      "application/vnd.sqlite3" = "sqlitebrowser.desktop";
-    };
   };
 
 }
