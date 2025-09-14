@@ -83,6 +83,8 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     nix-search-cli
     tree
+    openssh
+    wget
     # Desktop environment
     kdePackages.kcalc
     kdePackages.kclock
@@ -93,21 +95,16 @@
     kdePackages.partitionmanager
     kdePackages.kio # Allow Dolphin to map remote servers with SFTP
     kdePackages.kio-extras
-    # Wayland stuff
-    #wl-clipboard # command line copy/paste (? maybe to copy TO terminal?)
-    #wayland-utils # no idea
-    # Hyprland's default terminal
     kitty # works great
     # Hyprland app launcher
     #rofi-wayland # works great
-    # Firefox fork
-    floorp
+    # Work
     slack
     zoom
     libreoffice
     sqlitebrowser
-    openssh
-    wget
+    # Firefox fork
+    floorp
     vlc
     prismlauncher
   ];
@@ -154,14 +151,6 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-  # Configure some packages
-  #programs.floorp = {
-  #  enable = true;
-  #};
-  #programs.neovim = {
-  #  enable = true;
-  #  #defaultEditor = true;
-  #};
   programs.git = {
     enable = true;
     config = {
