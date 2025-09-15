@@ -8,6 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./gnome.nix
+      ./hardware.nix
       <home-manager/nixos>
     ];
 
@@ -53,34 +55,6 @@
     layout = "us";
     variant = "";
   };
-
-  # Desktop Environment
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  # https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
-  environment.gnome.excludePackages = with pkgs; [
-    baobab      # disk usage analyzer
-    cheese      # photo booth
-    #eog         # image viewer
-    epiphany    # web browser
-    #gedit       # text editor
-    #simple-scan # document scanner
-    totem       # video player
-    yelp        # help viewer
-    #evince      # document viewer
-    #file-roller # archive manager
-    #geary       # email client
-    seahorse    # password manager
-    gnome-clocks
-    gnome-calendar
-    gnome-characters
-    gnome-contacts
-    gnome-font-viewer
-    gnome-maps
-    gnome-weather
-    gnome-terminal
-  ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.clay = {
@@ -146,35 +120,9 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 
-  hardware = {
-    # Renamed from opengl.enable
-    graphics.enable = true;
-    # Most Wayland compositors need this
-    nvidia.modesetting.enable = true;
-    nvidia.powerManagement.enable = false;
-    nvidia.open = false;
-    nvidia.nvidiaSettings = true;
-
-  };
-
   # XDG portal for screen sharing # From hyprland configs. May not be necessary.
   #xdg.portal.enable = true;
   #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
-  # Printing
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
-
-  services.printing = {
-    enable = true;
-    drivers = with pkgs; [
-      cups-filters
-      cups-browsed
-    ];
-  };
 
   programs.git = {
     enable = true;
