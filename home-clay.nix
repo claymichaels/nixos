@@ -97,5 +97,66 @@
     '';
   };
 
-
+  # monitor setup for Gnome
+  home.file.".config/monitors.xml".text = ''
+  <monitors version="2">
+  <configuration>
+    <layoutmode>physical</layoutmode>
+    <logicalmonitor>
+      <x>1920</x>
+      <y>0</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-2</connector>
+          <vendor>ACR</vendor>
+          <product>Acer S232HL</product>
+          <serial>LQY080094201</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60.000</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-1</connector>
+          <vendor>ACR</vendor>
+          <product>Acer S232HL</product>
+          <serial>LQY080094201</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60.000</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>0</x>
+      <y>1080</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DP-1</connector>
+          <vendor>DEL</vendor>
+          <product>DELL U3818DW</product>
+          <serial>97F8P0AT0OZL</serial>
+        </monitorspec>
+        <mode>
+          <width>3840</width>
+          <height>1600</height>
+          <rate>59.994</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  '';
 }

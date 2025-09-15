@@ -66,12 +66,12 @@
     epiphany    # web browser
     #gedit       # text editor
     #simple-scan # document scanner
-    #totem       # video player
-    #yelp        # help viewer
-    evince      # document viewer
-    file-roller # archive manager
+    totem       # video player
+    yelp        # help viewer
+    #evince      # document viewer
+    #file-roller # archive manager
     #geary       # email client
-    #seahorse    # password manager
+    seahorse    # password manager
     gnome-clocks
     gnome-calendar
     gnome-characters
