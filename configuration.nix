@@ -55,13 +55,32 @@
   };
 
   # Desktop Environment
-  services.desktopManager = {
-    plasma6.enable = true;
-  };
-  services.displayManager = {
-    sddm.enable = true;
-    sddm.wayland.enable = true;
-  };
+  services.xserver.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+  # https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
+  environment.gnome.excludePackages = with pkgs; [
+    baobab      # disk usage analyzer
+    cheese      # photo booth
+    #eog         # image viewer
+    epiphany    # web browser
+    #gedit       # text editor
+    #simple-scan # document scanner
+    #totem       # video player
+    #yelp        # help viewer
+    evince      # document viewer
+    file-roller # archive manager
+    #geary       # email client
+    #seahorse    # password manager
+    gnome-clocks
+    gnome-calendar
+    gnome-characters
+    gnome-contacts
+    gnome-font-viewer
+    gnome-maps
+    gnome-weather
+    gnome-terminal
+  ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.clay = {
@@ -80,21 +99,12 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Terminal stuff
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #neovim
     nix-search-cli
     tree
     openssh
     wget
-    # Desktop environment
-    kdePackages.kcalc
-    kdePackages.kclock
-    kdePackages.kolourpaint
-    kdePackages.ksystemlog
-    kdePackages.sddm-kcm # configuration module for SDDM (which is what...?)
-    kdePackages.isoimagewriter
-    kdePackages.partitionmanager
-    kdePackages.kio # Allow Dolphin to map remote servers with SFTP
-    kdePackages.kio-extras
     kitty # works great
     # Hyprland app launcher
     #rofi-wayland # works great
@@ -148,8 +158,8 @@
   };
 
   # XDG portal for screen sharing # From hyprland configs. May not be necessary.
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  #xdg.portal.enable = true;
+  #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # Printing
   services.avahi = {
