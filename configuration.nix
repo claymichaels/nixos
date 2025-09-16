@@ -84,13 +84,14 @@
     #rofi-wayland # works great
     # Work
     slack
-    zoom
+    zoom-us
     libreoffice
     sqlitebrowser
-    # Firefox fork
-    floorp
+    floorp # Firefox fork
+    firefox
     vlc
-    prismlauncher
+    prismlauncher # Minecraft
+    dconf2nix
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

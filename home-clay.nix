@@ -89,9 +89,14 @@
     enable = true;
     defaultApplications = {
       "application/vnd.sqlite3" = "sqlitebrowser.desktop";
+      "text/html" = "floorp.desktop";
+      "x-scheme-handler/http" = "floorp.desktop";
+      "x-scheme-handler/https" = "floorp.desktop";
+      "x-scheme-handler/about" = "floorp.desktop";
+      "x-scheme-handler/unknown" = "floorp.desktop";
     };
   };
-  
+
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -99,5 +104,11 @@
     extraConfig = ''
       set number relativenumber
     '';
+  };
+
+  gtk.enable = true;
+  gtk.cursorTheme = {
+    name = "Adwaita-dark";
+    package = pkgs.gnome-themes-extra;
   };
 }

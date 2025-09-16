@@ -18,6 +18,8 @@
     #file-roller # archive manager
     #geary       # email client
     seahorse    # password manager
+    #gnome-camera or camera - neither work
+    gnome-connections
     gnome-clocks
     gnome-calendar
     gnome-characters
@@ -27,8 +29,8 @@
     gnome-weather
     gnome-terminal
   ];
-  # Gnome extensions
   environment.systemPackages = with pkgs; [
+    gnome-tweaks
     #gnomeExtensions.blur-my-shell
     #gnomeExtensions.just-perfection
     #gnomeExtensions.arc-menu
