@@ -132,5 +132,9 @@ Because I'm learning as I go.
 
 4. git push origin <branch name> # Upload the changes
 
+If Local is behind Remote: 
+
+git pull
+
 
 
