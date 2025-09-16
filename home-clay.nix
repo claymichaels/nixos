@@ -74,11 +74,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.rofi = {
-    enable = true;
-    theme = "/nix/store/4p8f4jz6a4qv7c4gmlm367vyfjvhnplk-rofi-1.7.9+wayland1/share/rofi/themes/solarized.rasi";
-  };
-
   # Make a .Desktop file for Sqlitebrowser
   xdg.desktopEntries.sqlitebrowser = {
     name = "Sqlite Browser";
