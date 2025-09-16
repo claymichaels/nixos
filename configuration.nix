@@ -8,6 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./gnome.nix
+      ./hardware.nix
       <home-manager/nixos>
     ];
 
@@ -54,15 +56,6 @@
     variant = "";
   };
 
-  # Desktop Environment
-  services.desktopManager = {
-    plasma6.enable = true;
-  };
-  services.displayManager = {
-    sddm.enable = true;
-    sddm.wayland.enable = true;
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.clay = {
     shell = pkgs.fish;
@@ -80,33 +73,25 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Terminal stuff
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #neovim
     nix-search-cli
     tree
     openssh
     wget
-    # Desktop environment
-    kdePackages.kcalc
-    kdePackages.kclock
-    kdePackages.kolourpaint
-    kdePackages.ksystemlog
-    kdePackages.sddm-kcm # configuration module for SDDM (which is what...?)
-    kdePackages.isoimagewriter
-    kdePackages.partitionmanager
-    kdePackages.kio # Allow Dolphin to map remote servers with SFTP
-    kdePackages.kio-extras
     kitty # works great
     # Hyprland app launcher
     #rofi-wayland # works great
     # Work
     slack
-    zoom
+    zoom-us
     libreoffice
     sqlitebrowser
-    # Firefox fork
-    floorp
+    floorp # Firefox fork
+    firefox
     vlc
-    prismlauncher
+    prismlauncher # Minecraft
+    dconf2nix
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -136,35 +121,9 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 
-  hardware = {
-    # Renamed from opengl.enable
-    graphics.enable = true;
-    # Most Wayland compositors need this
-    nvidia.modesetting.enable = true;
-    nvidia.powerManagement.enable = false;
-    nvidia.open = false;
-    nvidia.nvidiaSettings = true;
-
-  };
-
   # XDG portal for screen sharing # From hyprland configs. May not be necessary.
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
-  # Printing
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
-
-  services.printing = {
-    enable = true;
-    drivers = with pkgs; [
-      cups-filters
-      cups-browsed
-    ];
-  };
+  #xdg.portal.enable = true;
+  #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   programs.git = {
     enable = true;

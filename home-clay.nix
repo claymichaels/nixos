@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./monitors.nix
+  ];
+  
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "clay";
@@ -85,8 +89,26 @@
     enable = true;
     defaultApplications = {
       "application/vnd.sqlite3" = "sqlitebrowser.desktop";
+      "text/html" = "floorp.desktop";
+      "x-scheme-handler/http" = "floorp.desktop";
+      "x-scheme-handler/https" = "floorp.desktop";
+      "x-scheme-handler/about" = "floorp.desktop";
+      "x-scheme-handler/unknown" = "floorp.desktop";
     };
   };
 
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    extraConfig = ''
+      set number relativenumber
+    '';
+  };
 
+  gtk.enable = true;
+  gtk.cursorTheme = {
+    name = "Adwaita-dark";
+    package = pkgs.gnome-themes-extra;
+  };
 }
