@@ -14,6 +14,8 @@ nix-search "foo"    # Search available packages
 
 nix-shell -p foo    # start a temporary shell with the package Foo. Useful for using one-off utilities
 
+nix-store -q --references /var/run/current-system/sw | cut -d'-' -f2- | sort   # List installed packages w/ versions
+
 # Using Python
 
 ## Temporary installs for running a script
@@ -89,6 +91,10 @@ Sep 10 17:18:25 nixos-pc hm-activate-clay[184949]:   to, for example, 'backup' a
 In this case, I moved the ~/.config/rofi/config.rasi to config.rasi.backup, and it was replaced with a symlink to the home-manager store folder.
 
 When I added a new MIME type inorder to set a default application, (sqlitebrowser), it came up for /home/clay/.config/mimeapps.list.
+
+*White square cursor when switching DEs*
+
+https://wiki.nixos.org/wiki/GNOME#Missing_cursor/cursor_is_a_white_boxhttps://wiki.nixos.org/wiki/GNOME#Missing_cursor/cursor_is_a_white_box
 
 # Default apps
 

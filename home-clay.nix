@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./monitors.nix
+		./monitors.nix
   ];
   
   # Home Manager needs a bit of information about you and the paths it should
@@ -98,12 +98,10 @@
     vimAlias = true;
     extraConfig = ''
       set number relativenumber
+      autocmd FileType nix setlocal shiftwidth=2 tabstop=2
+      autocmd FileType py setlocal shiftwidth=4 tabstop=4
     '';
-  };
-
-  gtk.enable = true;
-  gtk.cursorTheme = {
-    name = "Adwaita-dark";
-    package = pkgs.gnome-themes-extra;
+		plugins = with pkgs.vimPlugins; [
+		];
   };
 }
