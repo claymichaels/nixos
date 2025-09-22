@@ -59,9 +59,6 @@
     tree
     openssh
     wget
-    # Hyprland app launcher
-    #rofi-wayland # works great
-    # Work
     slack
     zoom-us
     libreoffice
