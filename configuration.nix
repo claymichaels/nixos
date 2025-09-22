@@ -87,7 +87,6 @@
     zoom-us
     libreoffice
     sqlitebrowser
-    floorp # Firefox fork
     firefox
     vlc
     prismlauncher # Minecraft
