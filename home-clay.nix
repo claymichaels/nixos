@@ -3,6 +3,7 @@
 {
   imports = [
 		./monitors.nix
+		./browsers.nix
   ];
   
   # Home Manager needs a bit of information about you and the paths it should
@@ -124,5 +125,10 @@
 				clipboard-indicator.extensionUuid
 			];
 		};
+  };
+  nixpkgs.config.packageOverrides = pkgs: {
+  	nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/main.tar.gz") {
+      		inherit pkgs;
+    	};
   };
 }
