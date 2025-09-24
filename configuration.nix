@@ -40,7 +40,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.clay = {
-    #shell = pkgs.fish;
+    #shell = "bash";
     isNormalUser = true;
     description = "Clay";
     extraGroups = [ "networkmanager" "wheel" ];
@@ -59,6 +59,7 @@
     tree
     openssh
     wget
+		procps
     slack
     zoom-us
     libreoffice
@@ -114,8 +115,10 @@
     enable = true;
     shellAliases = {
       ll = "ls -lah";
+			cls = "clear";
     };
   };
+
 
   programs.steam = {
     enable = true;

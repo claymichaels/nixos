@@ -96,6 +96,12 @@ When I added a new MIME type inorder to set a default application, (sqlitebrowse
 
 https://wiki.nixos.org/wiki/GNOME#Missing_cursor/cursor_is_a_white_boxhttps://wiki.nixos.org/wiki/GNOME#Missing_cursor/cursor_is_a_white_box
 
+
+# Gnome
+
+To see what settings to use, toggle it on and off while watching dconf watch /
+
+
 # Default apps
 
 After adding the pkgs.sqlitebrowser to home-manager, KDE didn't recognize it as the default app. 
