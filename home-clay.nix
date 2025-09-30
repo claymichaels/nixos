@@ -35,7 +35,9 @@
     #(pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-		#pkgs.gnome-menus
+		#pkgs.gnomeExtensions.blur-my-shell
+		#pkgs.gnomeExtensions.places-status-indicator
+		#pkgs.gnomeExtensions.clipboard-indicator
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -86,11 +88,11 @@
     enable = true;
     defaultApplications = {
       "application/vnd.sqlite3" = "sqlitebrowser.desktop";
-      "text/html" = "vivaldi.desktop";
-      "x-scheme-handler/http" = "vivaldi.desktop";
-      "x-scheme-handler/https" = "vivaldi.desktop";
-      "x-scheme-handler/about" = "vivaldi.desktop";
-      "x-scheme-handler/unknown" = "vivaldi.desktop";
+      "text/html" = "vivaldi-stable.desktop";
+      "x-scheme-handler/http" = "vivaldi-stable.desktop";
+      "x-scheme-handler/https" = "vivaldi-stable.desktop";
+      "x-scheme-handler/about" = "vivaldi-stable.desktop";
+      "x-scheme-handler/unknown" = "vivaldi-stable.desktop";
     };
   };
 
@@ -109,23 +111,24 @@
 		];
   };
 
-  dconf = {
-    enable = true;
-    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-		settings."org/gnome/shell" = {
-			favorite-apps = [
-				"org.gnome.Nautilus.desktop"
-				"vivaldi-stable.desktop"
-				"fish.desktop"
-			];
-			disable-user-extensions = false;
-			enabled-extensions = with pkgs.gnomeExtensions; [
-				blur-my-shell.extensionUuid
-				places-status-indicator.extensionUuid
-				clipboard-indicator.extensionUuid
-			];
-		};
-  };
+#  dconf = {
+#    enable = true;
+#    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+#		settings."org/gnome/shell" = {
+#			favorite-apps = [
+#				"org.gnome.Nautilus.desktop"
+#				"vivaldi-stable.desktop"
+#				"slack.desktop"
+#				"fish.desktop"
+#			];
+#			disable-user-extensions = false;
+#			enabled-extensions = with pkgs.gnomeExtensions; [
+#				"blur-my-shell.extensionUuid"
+#				"places-status-indicator.extensionUuid"
+#				"clipboard-indicator.extensionUuid"
+#			];
+#		};
+#  };
   nixpkgs.config.packageOverrides = pkgs: {
   	nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/main.tar.gz") {
       		inherit pkgs;

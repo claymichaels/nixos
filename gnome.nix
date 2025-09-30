@@ -31,8 +31,30 @@
   ];
   environment.systemPackages = with pkgs; [
     gnome-tweaks
-    #gnomeExtensions.blur-my-shell
+    gnomeExtensions.blur-my-shell
+		gnomeExtensions.places-status-indicator
+		gnomeExtensions.clipboard-indicator
     #gnomeExtensions.just-perfection
     #gnomeExtensions.arc-menu
-  ];
+	];
+	home-manager.users.clay = {
+		dconf = {
+			enable = true;
+			settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+			settings."org/gnome/shell" = {
+			favorite-apps = [
+				"org.gnome.Nautilus.desktop"
+				"vivaldi-stable.desktop"
+					"slack.desktop"
+					"fish.desktop"
+				];
+				disable-user-extensions = false;
+				enabled-extensions = with pkgs.gnomeExtensions; [
+					"blur-my-shell.extensionUuid"
+					"places-status-indicator.extensionUuid"
+					"clipboard-indicator.extensionUuid"
+				];
+			};
+		};
+	};
 }
