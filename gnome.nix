@@ -35,12 +35,14 @@
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.extension-list
     gnomeExtensions.tiling-assistant
+    gnomeExtensions.random-wallpaper
   ];
   home-manager.users.clay = {
     dconf = {
       enable = true;
       settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
       settings."org/gnome/shell" = {
+        disable-extension-version-validation = true;
         favorite-apps = [
           "org.gnome.Nautilus.desktop"
           "vivaldi-stable.desktop"
@@ -53,6 +55,7 @@
           "clipboard-indicator@tudmoto.com"
           "extension-list@tu.berry"
           "tiling-assistant@leleat-on-github"
+          "randomwallpaper@iflow.space"
         ];
       };
       settings."org/gnome/shell/extensions/extension-list" = {
@@ -68,6 +71,11 @@
         window-gap = 20;
         single-screen-gap = 14;
         maximize-with-gaps = true;
+      };
+      settings."org/gnome/shell/extensions/space-iflow-randomwallpaper" = {
+        fetch-on-startup = true;
+        history-length = 5;
+        hide-panel-icon = true;
       };
       settings."org/gnome/console" = {
         shell = [ "FISH" ];
