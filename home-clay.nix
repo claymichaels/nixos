@@ -1,11 +1,16 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [
-		./monitors.nix
-		./browsers.nix
+    ./monitors.nix
+    ./browsers.nix
   ];
-  
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "clay";
@@ -35,9 +40,9 @@
     #(pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-		#pkgs.gnomeExtensions.blur-my-shell
-		#pkgs.gnomeExtensions.places-status-indicator
-		#pkgs.gnomeExtensions.clipboard-indicator
+    #pkgs.gnomeExtensions.blur-my-shell
+    #pkgs.gnomeExtensions.places-status-indicator
+    #pkgs.gnomeExtensions.clipboard-indicator
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -96,7 +101,17 @@
     };
   };
 
-	programs.fish.enable = true;
+  # programs.bash = {
+  #		enable = true;
+  #    initExtra = ''
+  #      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+  #      then
+  #        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+  #        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+  #      fi
+  #    '';
+  #  };
+  programs.fish.enable = true;
 
   programs.neovim = {
     enable = true;
@@ -107,31 +122,31 @@
       autocmd FileType nix setlocal shiftwidth=2 tabstop=2
       autocmd FileType py setlocal shiftwidth=4 tabstop=4
     '';
-		plugins = with pkgs.vimPlugins; [
-		];
+    plugins = with pkgs.vimPlugins; [
+    ];
   };
 
-#  dconf = {
-#    enable = true;
-#    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-#		settings."org/gnome/shell" = {
-#			favorite-apps = [
-#				"org.gnome.Nautilus.desktop"
-#				"vivaldi-stable.desktop"
-#				"slack.desktop"
-#				"fish.desktop"
-#			];
-#			disable-user-extensions = false;
-#			enabled-extensions = with pkgs.gnomeExtensions; [
-#				"blur-my-shell.extensionUuid"
-#				"places-status-indicator.extensionUuid"
-#				"clipboard-indicator.extensionUuid"
-#			];
-#		};
-#  };
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "adwaita_dark";
+    };
+    languages.language = [
+      {
+        name = "nix";
+        auto-format = true;
+        formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
+      }
+      {
+        name = "python";
+        auto-format = true;
+      }
+    ];
+  };
+
   nixpkgs.config.packageOverrides = pkgs: {
-  	nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/main.tar.gz") {
-      		inherit pkgs;
-    	};
+    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/main.tar.gz") {
+      inherit pkgs;
+    };
   };
 }

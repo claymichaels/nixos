@@ -6,18 +6,18 @@
   services.xserver.desktopManager.gnome.enable = true;
   # https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
   environment.gnome.excludePackages = with pkgs; [
-    baobab      # disk usage analyzer
-    cheese      # photo booth
+    baobab # disk usage analyzer
+    cheese # photo booth
     #eog         # image viewer
-    epiphany    # web browser
+    epiphany # web browser
     #gedit       # text editor
     #simple-scan # document scanner
-    totem       # video player
-    yelp        # help viewer
+    totem # video player
+    yelp # help viewer
     #evince      # document viewer
     #file-roller # archive manager
     #geary       # email client
-    seahorse    # password manager
+    seahorse # password manager
     #gnome-camera or camera - neither work
     gnome-connections
     gnome-clocks
@@ -31,30 +31,47 @@
   ];
   environment.systemPackages = with pkgs; [
     gnome-tweaks
-    gnomeExtensions.blur-my-shell
-		gnomeExtensions.places-status-indicator
-		gnomeExtensions.clipboard-indicator
-    #gnomeExtensions.just-perfection
-    #gnomeExtensions.arc-menu
-	];
-	home-manager.users.clay = {
-		dconf = {
-			enable = true;
-			settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-			settings."org/gnome/shell" = {
-			favorite-apps = [
-				"org.gnome.Nautilus.desktop"
-				"vivaldi-stable.desktop"
-					"slack.desktop"
-					"fish.desktop"
-				];
-				disable-user-extensions = false;
-				enabled-extensions = with pkgs.gnomeExtensions; [
-					"blur-my-shell.extensionUuid"
-					"places-status-indicator.extensionUuid"
-					"clipboard-indicator.extensionUuid"
-				];
-			};
-		};
-	};
+    gnomeExtensions.places-status-indicator
+    gnomeExtensions.clipboard-indicator
+    gnomeExtensions.extension-list
+    gnomeExtensions.tiling-assistant
+  ];
+  home-manager.users.clay = {
+    dconf = {
+      enable = true;
+      settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+      settings."org/gnome/shell" = {
+        favorite-apps = [
+          "org.gnome.Nautilus.desktop"
+          "vivaldi-stable.desktop"
+          "slack.desktop"
+          "org.gnome.Console.desktop"
+        ];
+        disable-user-extensions = false;
+        enabled-extensions = with pkgs.gnomeExtensions; [
+          "places-menu@gnome-shell-extensions@gcampax.github.com"
+          "clipboard-indicator@tudmoto.com"
+          "extension-list@tu.berry"
+          "tiling-assistant@leleat-on-github"
+        ];
+      };
+      settings."org/gnome/shell/extensions/extension-list" = {
+        extension-appid = [
+          "org.gnome.Extensions.desktop"
+        ];
+        filter-button = false;
+        remove-button = false;
+        homepage-button = false;
+        ignore-button = false;
+      };
+      settings."org/gnome/shell/extensions/tiling-assistant" = {
+        window-gap = 20;
+        single-screen-gap = 14;
+        maximize-with-gaps = true;
+      };
+      settings."org/gnome/console" = {
+        shell = [ "FISH" ];
+      };
+    }; # dconf
+  }; # home-manager.users.clay
 }
