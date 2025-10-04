@@ -16,9 +16,9 @@
     yelp # help viewer
     #evince      # document viewer
     #file-roller # archive manager
-    #geary       # email client
+    geary # email client
     seahorse # password manager
-    #gnome-camera or camera - neither work
+    # gnome-camera # or camera - neither work
     gnome-connections
     gnome-clocks
     gnome-calendar
@@ -36,11 +36,13 @@
     gnomeExtensions.extension-list
     gnomeExtensions.tiling-assistant
     gnomeExtensions.random-wallpaper
+    gnomeExtensions.task-widget
   ];
   home-manager.users.clay = {
     dconf = {
       enable = true;
       settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+      settings."org/gnome/desktop/peripherals/mouse".speed = "1.0";
       settings."org/gnome/shell" = {
         disable-extension-version-validation = true;
         favorite-apps = [
@@ -51,17 +53,16 @@
         ];
         disable-user-extensions = false;
         enabled-extensions = with pkgs.gnomeExtensions; [
-          "places-menu@gnome-shell-extensions@gcampax.github.com"
-          "clipboard-indicator@tudmoto.com"
+          "places-menu@gnome-shell-extensions.gcampax.github.com"
+          "clipboard-indicator@tudmotu.com"
           "extension-list@tu.berry"
           "tiling-assistant@leleat-on-github"
           "randomwallpaper@iflow.space"
+          "task-widget@juozasmiskinis.gitlab.io"
         ];
       };
       settings."org/gnome/shell/extensions/extension-list" = {
-        extension-appid = [
-          "org.gnome.Extensions.desktop"
-        ];
+        extension-appid = "org.gnome.Extensions.desktop";
         filter-button = false;
         remove-button = false;
         homepage-button = false;
@@ -76,6 +77,12 @@
         fetch-on-startup = true;
         history-length = 5;
         hide-panel-icon = true;
+      };
+      settings."org/gnome/desktop/wm/keybindings" = {
+        move-to-monitor-up = [ "<Shift><Super>KP_Up" ];
+        move-to-monitor-down = [ "<Shift><Super>KP_Down" ];
+        move-to-monitor-left = [ "<Shift><Super>KP_Left" ];
+        move-to-monitor-right = [ "<Shift><Super>KP_Right" ];
       };
       settings."org/gnome/console" = {
         shell = [ "FISH" ];
