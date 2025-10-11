@@ -78,6 +78,11 @@
         history-length = 5;
         hide-panel-icon = true;
       };
+      settings."org/gnome/shell/extensions/task-widget" = {
+        merge-task-lists = true;
+        hide-empty-completed-task-lists = true;
+        disabled-task-lists = [ "system-task-list" ];
+      };
       settings."org/gnome/desktop/wm/keybindings" = {
         move-to-monitor-up = [ "<Shift><Super>KP_Up" ];
         move-to-monitor-down = [ "<Shift><Super>KP_Down" ];

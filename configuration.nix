@@ -66,9 +66,10 @@
     sqlitebrowser
     firefox
     vlc
-    prismlauncher # Minecraft
+    #prismlauncher # Minecraft
     dconf2nix
 		vivaldi
+		python3Minimal
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
