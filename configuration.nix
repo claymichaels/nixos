@@ -5,13 +5,13 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./gnome.nix
-      ./hardware.nix
-      <home-manager/nixos>
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./gnome.nix
+    ./hardware.nix
+    <home-manager/nixos>
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -29,7 +29,7 @@
 
   # /etc/hosts
   networking.hosts = {
-    "192.168.1.235" = ["pi"];
+    "192.168.1.235" = [ "pi" ];
   };
 
   # Set your time zone.
@@ -43,7 +43,10 @@
     #shell = "bash";
     isNormalUser = true;
     description = "Clay";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [ ];
   };
   home-manager.users.clay = ./home-clay.nix;
@@ -59,7 +62,7 @@
     tree
     openssh
     wget
-		procps
+    procps
     slack
     zoom-us
     libreoffice
@@ -68,8 +71,11 @@
     vlc
     #prismlauncher # Minecraft
     dconf2nix
-		vivaldi
-		python3Minimal
+    vivaldi
+    python3Minimal
+    python313Packages.python-lsp-server
+    python313Packages.jedi-language-server
+    python313Packages.ruff
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -116,10 +122,9 @@
     enable = true;
     shellAliases = {
       ll = "ls -lah";
-			cls = "clear";
+      cls = "clear";
     };
   };
-
 
   programs.steam = {
     enable = true;
