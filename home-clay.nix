@@ -40,9 +40,7 @@
     #(pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    #pkgs.gnomeExtensions.blur-my-shell
-    #pkgs.gnomeExtensions.places-status-indicator
-    #pkgs.gnomeExtensions.clipboard-indicator
+    pkgs.zoxide
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -113,6 +111,9 @@
   #  };
   programs.fish = {
     enable = true;
+    shellAliases = {
+      ls = "eza -hl --git";
+    };
     functions = {
       # https://alexwlchan.net/2023/fish-venv/
       venv = ''
@@ -196,5 +197,22 @@
     nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/main.tar.gz") {
       inherit pkgs;
     };
+  };
+
+  programs.zoxide = {
+    # CD replacement
+    enable = true;
+    options = [
+      "cmd --cd"
+    ];
+  };
+
+  programs.eza = {
+    # LS replacement
+    enable = true;
+    enableFishIntegration = true;
+    git = true;
+    # theme = https://github.com/eza-community/eza#custom-themes
+    icons = "auto";
   };
 }
