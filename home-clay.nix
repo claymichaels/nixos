@@ -40,7 +40,7 @@
     #(pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    pkgs.zoxide
+    #pkgs.zoxide
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -99,21 +99,19 @@
     };
   };
 
-  # programs.bash = {
-  #		enable = true;
-  #    initExtra = ''
-  #      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-  #      then
-  #        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-  #        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-  #      fi
-  #    '';
-  #  };
   programs.fish = {
     enable = true;
     shellAliases = {
       ls = "eza -hl --git";
+      lh = "eza -Hhl --git";
+      vim = "hx";
+      cd = "z";
     };
+    plugins = [
+      # Need to figure out plugins. Can Fisher be installed on Nixos?
+      # https://github.com/kidonng/nix.fish
+      # https://github.com/kbryy/ls-after-cd.fish
+    ];
     functions = {
       # https://alexwlchan.net/2023/fish-venv/
       venv = ''
@@ -159,20 +157,14 @@
           end
         end
       '';
+      lsaftercd = ''
+        function on_directory_change --on-variable PWD
+          if not string match -q "*;*" "eza"
+            eval "eza"
+          end
+        end
+      '';
     };
-  };
-
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    extraConfig = ''
-      set number relativenumber
-      autocmd FileType nix setlocal shiftwidth=2 tabstop=2
-      autocmd FileType py setlocal shiftwidth=4 tabstop=4
-    '';
-    plugins = with pkgs.vimPlugins; [
-    ];
   };
 
   programs.helix = {
@@ -202,8 +194,8 @@
   programs.zoxide = {
     # CD replacement
     enable = true;
+    enableFishIntegration = true;
     options = [
-      "cmd --cd"
     ];
   };
 
