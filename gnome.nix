@@ -92,6 +92,9 @@
       settings."org/gnome/console" = {
         shell = [ "FISH" ];
       };
+      settings."org/gnome/nautilus/preferences" = {
+        click-policy = "single";
+      };
     }; # dconf
   }; # home-manager.users.clay
 }
