@@ -24,7 +24,9 @@ nix-shell -p python313
 
 nix-shell -p virtualenv
 
-virtualenv venv
+virtualenv .venv
+
+source .venv/bin/activate
 
 pip install foo
 

@@ -103,7 +103,7 @@
     enable = true;
     shellAliases = {
       ls = "eza -hl --git";
-      lh = "eza -Hhl --git";
+      lh = "eza -ahl --git";
       vim = "hx";
       cd = "z";
     };

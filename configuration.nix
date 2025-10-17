@@ -76,6 +76,7 @@
     python313Packages.python-lsp-server
     python313Packages.jedi-language-server
     python313Packages.ruff
+    #devenv
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -121,7 +122,6 @@
   programs.fish = {
     enable = true;
     shellAliases = {
-      ll = "ls -lah";
       cls = "clear";
     };
   };
