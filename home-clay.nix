@@ -102,8 +102,9 @@
   programs.fish = {
     enable = true;
     shellAliases = {
+      l = "eza";
       ls = "eza -lh --git";
-      lh = "eza -lha --git";
+      ll = "eza -lha --git";
       vim = "hx";
     };
     plugins = [
@@ -111,13 +112,7 @@
       # https://github.com/kidonng/nix.fish
       # https://github.com/kbryy/ls-after-cd.fish
     ];
-    functions = {
-      # https://alexwlchan.net/2023/fish-venv/
-      cd = {
-        description = "PWD and LS after a CD";
-        body = "z $argv && pwd && eza";
-      };
-    };
+    interactiveShellInit = builtins.readFile ./functions.fish;
   };
 
   programs.helix = {
