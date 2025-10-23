@@ -72,7 +72,7 @@
     #prismlauncher # Minecraft
     dconf2nix
     vivaldi
-    python3Minimal
+    python313
     python313Packages.python-lsp-server
     python313Packages.jedi-language-server
     python313Packages.ruff
