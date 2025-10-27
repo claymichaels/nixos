@@ -76,7 +76,9 @@
     python313Packages.python-lsp-server
     python313Packages.jedi-language-server
     python313Packages.ruff
+    python313Packages.virtualenv
     #devenv
+    trashy # trash cli to replace RM
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
