@@ -106,6 +106,8 @@
       ls = "eza -lh --git";
       ll = "eza -lha --git";
       vim = "hx";
+      vi = "hx";
+      rt = "trash put";
     };
     plugins = [
       # Need to figure out plugins. Can Fisher be installed on Nixos?
