@@ -31,6 +31,13 @@ end
 #     if test -n "$VIRTUAL_ENV"
 #         deactivate
 # end
+function venv
+    virtualenv .venv
+    source .venv/bin/activate.fish
+    if test -e requirements.txt
+        pip install -r requirements.txt
+    end
+end
 function autovenv --on-variable PWD
     if test -e .venv
         echo "venv folder exists"
