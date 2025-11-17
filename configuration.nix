@@ -79,6 +79,7 @@
     python313Packages.virtualenv
     #devenv
     trashy # trash cli to replace RM
+    yt-dlp # Youtube downloader
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
