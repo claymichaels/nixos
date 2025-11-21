@@ -80,6 +80,7 @@
     #devenv
     trashy # trash cli to replace RM
     yt-dlp # Youtube downloader
+    discord
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
