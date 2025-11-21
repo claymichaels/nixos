@@ -82,6 +82,7 @@
     yt-dlp # Youtube downloader
     discord
     prismlauncher
+    fd # Find
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
