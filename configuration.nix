@@ -81,6 +81,7 @@
     trashy # trash cli to replace RM
     yt-dlp # Youtube downloader
     discord
+    prismlauncher
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
