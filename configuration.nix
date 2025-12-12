@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
     ./gnome.nix
     ./hardware.nix
+    ./games.nix
     <home-manager/nixos>
   ];
 
@@ -81,7 +82,6 @@
     trashy # trash cli to replace RM
     yt-dlp # Youtube downloader
     discord
-    prismlauncher
     fd # Find
   ];
 
@@ -131,10 +131,4 @@
       cls = "clear";
     };
   };
-
-  programs.steam = {
-    enable = true;
-    # extraCompatPackages = [ proton-ge-bin ]; example
-  };
-
 }
