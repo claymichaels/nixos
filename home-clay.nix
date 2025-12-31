@@ -119,20 +119,44 @@
 
   programs.helix = {
     enable = true;
+    extraPackages = with pkgs; [
+      nixd
+      nil
+      alejandra
+    ];
     settings = {
       theme = "adwaita_dark";
     };
-    languages.language = [
-      {
-        name = "nix";
-        auto-format = true;
-        formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
-      }
-      {
-        name = "python";
-        auto-format = true;
-      }
-    ];
+    languages = {
+      language = [
+        {
+          name = "nix";
+          auto-format = true;
+          file-types = [ "nix" ];
+          formatter = {
+            command = "alejandra";
+            args = [ "--quiet" ];
+            # command = lib.getExe pkgs.nixfmt-rfc-style;
+          };
+        }
+        {
+          name = "python";
+          auto-format = true;
+          file-types = [ "py" ];
+          formatter = {
+            command = "ruff";
+          };
+        }
+      ];
+      language-server = {
+        nixd = {
+          command = "nixd";
+        };
+        nil = {
+          command = "nil";
+        };
+      };
+    };
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
