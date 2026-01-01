@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     # https://wiki.nixos.org/wiki/Minecraft
     prismlauncher # Minecraft
