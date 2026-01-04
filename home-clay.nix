@@ -3,9 +3,7 @@
   pkgs,
   lib,
   ...
-}:
-
-{
+}: {
   imports = [
     ./monitors.nix
     ./browsers.nix
@@ -108,6 +106,7 @@
       vim = "hx";
       vi = "hx";
       rt = "trash put";
+      lg = "lazygit";
     };
     plugins = [
       # Need to figure out plugins. Can Fisher be installed on Nixos?
@@ -132,17 +131,17 @@
         {
           name = "nix";
           auto-format = true;
-          file-types = [ "nix" ];
+          file-types = ["nix"];
           formatter = {
             command = "alejandra";
-            args = [ "--quiet" ];
+            args = ["--quiet"];
             # command = lib.getExe pkgs.nixfmt-rfc-style;
           };
         }
         {
           name = "python";
           auto-format = true;
-          file-types = [ "py" ];
+          file-types = ["py"];
           formatter = {
             command = "ruff";
           };

@@ -58,32 +58,35 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # System stuff
+    python313
+    python313Packages.virtualenv
+    # Helix plugins
+    python313Packages.python-lsp-server
+    python313Packages.jedi-language-server
+    python313Packages.ruff
     # Terminal stuff
+    dconf2nix # Helps turn Gnome settings into Nix HM
+    duf # DU alternative (Shows mounted filesystems, lsblk shows devices)
+    fd # Find
+    lazygit # Awesome git CLI
     nix-search-cli
-    tree
     openssh
-    wget
     procps
+    trashy # trash cli to replace RM
+    tree
+    wget
+    # Work stuff
     slack
     zoom-us
     libreoffice
     sqlitebrowser
     firefox
-    vlc
-    #prismlauncher # Minecraft
-    dconf2nix # Helps turn Gnome settings into Nix HM
-    vivaldi
-    python313
-    python313Packages.python-lsp-server
-    python313Packages.jedi-language-server
-    python313Packages.ruff
-    python313Packages.virtualenv
-    #devenv
-    trashy # trash cli to replace RM
-    yt-dlp # Youtube downloader
+    # Personal
     discord
-    fd # Find
-    lazygit # Awesome git CLI
+    vlc
+    vivaldi
+    yt-dlp # Youtube downloader
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
