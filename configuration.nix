@@ -78,6 +78,7 @@
     tree
     wget
     # Work stuff
+    authenticator
     slack
     zoom-us
     libreoffice
