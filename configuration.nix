@@ -73,6 +73,7 @@
     nix-search-cli
     openssh
     procps
+    tldr # MAN pages, sort of
     trashy # trash cli to replace RM
     tree
     wget
