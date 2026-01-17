@@ -133,4 +133,6 @@
     "electron-36.9.5" # NO IDEA what is using this. Heroic or flatpack? Last things I added.
     # Required becase SOMETHING is using this version, and it breaks nixos-rebuild
   ];
+
+  programs.adb.enable = true;
 }
