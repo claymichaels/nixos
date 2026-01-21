@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Desktop Environment
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
@@ -49,6 +52,7 @@
           "org.gnome.Nautilus.desktop"
           "vivaldi-stable.desktop"
           "slack.desktop"
+          "com.belmoussaoui.Authenticator.desktop"
           "org.gnome.Console.desktop"
         ];
         disable-user-extensions = false;
@@ -81,16 +85,16 @@
       settings."org/gnome/shell/extensions/task-widget" = {
         merge-task-lists = true;
         hide-empty-completed-task-lists = true;
-        disabled-task-lists = [ "system-task-list" ];
+        disabled-task-lists = ["system-task-list"];
       };
       settings."org/gnome/desktop/wm/keybindings" = {
-        move-to-monitor-up = [ "<Shift><Super>KP_Up" ];
-        move-to-monitor-down = [ "<Shift><Super>KP_Down" ];
-        move-to-monitor-left = [ "<Shift><Super>KP_Left" ];
-        move-to-monitor-right = [ "<Shift><Super>KP_Right" ];
+        move-to-monitor-up = ["<Shift><Super>KP_Up"];
+        move-to-monitor-down = ["<Shift><Super>KP_Down"];
+        move-to-monitor-left = ["<Shift><Super>KP_Left"];
+        move-to-monitor-right = ["<Shift><Super>KP_Right"];
       };
       settings."org/gnome/console" = {
-        shell = [ "FISH" ];
+        shell = ["FISH"];
       };
       settings."org/gnome/nautilus/preferences" = {
         click-policy = "single";
