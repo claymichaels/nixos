@@ -38,7 +38,7 @@ function venv
         pip install -r requirements.txt
     end
 end
-function autovenv --on-variable PWD
+function autovenv --on-variable PWD --description "Auto activate virtualenv"
     if test -e .venv
         echo "venv folder exists"
         source .venv/bin/activate.fish
