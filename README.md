@@ -10,6 +10,8 @@ sudo nix-env --delete-generations <gen number>  # Deletes a generation
 
 sudo nixos-rebuild switch --profile-name "foo"  # I think I can use profiles like GIT branches to switch DEs?
 
+nixos-rebuild switch --upgrade # Update the nixpkgs repo and update declared packages to newest available.
+
 nix-search "foo"    # Search available packages
 
 nix-shell -p foo    # start a temporary shell with the package Foo. Useful for using one-off utilities
