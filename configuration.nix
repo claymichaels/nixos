@@ -95,6 +95,7 @@
     vlc
     vivaldi
     yt-dlp # Youtube downloader
+    orca-slicer # 3D printing
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
