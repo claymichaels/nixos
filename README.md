@@ -153,4 +153,8 @@ If Local is behind Remote:
 git pull
 
 
+# Fish
 
+for f in (fd foo); cp $f .;end;
+
+Do a thing to files from a list
