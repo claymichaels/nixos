@@ -5,8 +5,8 @@
 }: {
   # Desktop Environment
   services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
   # https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
   environment.gnome.excludePackages = with pkgs; [
     baobab # disk usage analyzer
