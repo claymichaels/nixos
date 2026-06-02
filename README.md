@@ -100,6 +100,17 @@ When I added a new MIME type inorder to set a default application, (sqlitebrowse
 
 https://wiki.nixos.org/wiki/GNOME#Missing_cursor/cursor_is_a_white_boxhttps://wiki.nixos.org/wiki/GNOME#Missing_cursor/cursor_is_a_white_box
 
+*nix-channel --update and upgrading to new Nixos stable breaks Python .venvs*
+
+The specific Python being pointed to in the .venv is garbage collected. One option is to exclude a version from GC by using gcroots somehow, so that the virtualenv version is still available. Probably a better option is not to use virtualenv, or to use it differently.
+
+Further reading:
+
+https://nix.dev/manual/nix/2.28/package-management/garbage-collector-roots.html
+
+https://www.reddit.com/r/NixOS/comments/17c0r68/how_to_keep_develop_shell_from_gc_nonnixos/
+
+
 
 # Gnome
 
