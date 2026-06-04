@@ -1,8 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: let
+  home-manager = fetchTarball "https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz";
+in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -10,7 +8,7 @@
     ./hardware.nix
     ./games.nix
     ./flatpak.nix
-    <home-manager/nixos>
+    (import "${home-manager}/nixos")
     # "${nix-flatpak}/modules/nixos.nix"
   ];
 
