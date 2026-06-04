@@ -142,4 +142,15 @@ in {
     "electron-36.9.5" # NO IDEA what is using this. Heroic or flatpack? Last things I added.
     # Required becase SOMETHING is using this version, and it breaks nixos-rebuild
   ];
+
+  # Automatic system updates (not upgrades)
+  system.autoUpgrade = {
+    enable = true;
+    # flags = [
+    # "--print-build-logs"
+    # ];
+    dates = "02:00";
+    randomizedDelaySec = "45min";
+    allowReboot = false;
+  };
 }
