@@ -153,6 +153,7 @@
     };
   };
 
+  # "nur" needed for Firefox plugins.
   nixpkgs.config.packageOverrides = pkgs: {
     nur = import (fetchTarball "https://github.com/nix-community/NUR/archive/main.tar.gz") {
       inherit pkgs;
