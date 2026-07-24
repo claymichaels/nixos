@@ -18,6 +18,27 @@ nix-shell -p foo    # start a temporary shell with the package Foo. Useful for u
 
 nix-store -q --references /var/run/current-system/sw | cut -d'-' -f2- | sort   # List installed packages w/ versions
 
+nix-channel --list # Outputs the current channel versions. This should show my Nixos (actually nixpkgs) and my home-manager versions.
+
+## Updating
+
+sudo nixos-rebuild switch --upgrade
+
+Updates to latest package versions in the currently-defined channels. (sudo nix-channel --list)
+
+I will try automating this.  https://wiki.nixos.org/wiki/Automatic_system_upgrades
+
+## Upgrading
+
+When the NixOs version increments, nixpkgs needs to be pointed at the new channel.
+
+sudo nix-channel --add https://nixos.org/channels/nixos-26.05 nixos
+sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz home manager
+sudo nixos-rebuild switch --upgrade  # Built in "nix-channel --update"
+
+Replace the previous versions, you don't need to remove them first. It might be OK for home-manager to be a version behind, but probably better to wait for it to be updated.
+Note that it seems unnecessary for my user to have anything listed, only the root user. I DID have channels listed for myself in addition to root, but it doesn't seem to have had any effect. Removing them also didn't do anything noticeable.
+
 # Using Python
 
 ## Temporary installs for running a script

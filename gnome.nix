@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # Desktop Environment
   services.xserver.enable = true;
   services.displayManager.gdm.enable = true;
