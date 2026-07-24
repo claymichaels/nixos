@@ -88,6 +88,7 @@ in {
     libreoffice
     sqlitebrowser
     firefox
+    bruno # FOSS postman, hopefully
     # Personal
     discord
     vlc
