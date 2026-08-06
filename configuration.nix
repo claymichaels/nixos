@@ -34,6 +34,7 @@ in {
   # /etc/hosts
   networking.hosts = {
     "192.168.1.235" = ["pi"];
+    "192.168.1.214" = ["hp"];
   };
 
   # Set your time zone.
@@ -95,6 +96,7 @@ in {
     vivaldi
     yt-dlp # Youtube downloader
     orca-slicer # 3D printing
+    piper # Gaming mouse control
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -154,4 +156,6 @@ in {
     randomizedDelaySec = "45min";
     allowReboot = false;
   };
+
+  services.ratbagd.enable = true; # For Piper - gaming mouse control
 }
