@@ -90,6 +90,8 @@ in {
     sqlitebrowser
     firefox
     bruno # FOSS postman, hopefully
+    claude-code # Let's try this out...
+    nodejs
     # Personal
     discord
     vlc
