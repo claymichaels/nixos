@@ -25,8 +25,11 @@
     nvidia.modesetting.enable = true;
     # Graphical corruption and system crashes on suspend/resume
     # powerManagement.enable = true can sometimes fix this, but is itself unstable and is known to cause suspend issues
-    nvidia.powerManagement.enable = false;
+    nvidia.powerManagement.enable = true; # Recommended by a Lemming
   };
+
+  # From https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/nvidia/default.nix
+  services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
 
   # Printing
   services.avahi = {
