@@ -74,6 +74,7 @@ in {
     duf # DU alternative (Shows mounted filesystems, lsblk shows devices)
     fd # Find
     lazygit # Awesome git CLI
+    difftastic # Much better Diff
     nix-search-cli
     openssh
     procps
