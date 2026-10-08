@@ -100,6 +100,7 @@ in {
     yt-dlp # Youtube downloader
     orca-slicer # 3D printing
     piper # Gaming mouse control
+    ydotool # Keyboard automation for MC shorcuts
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
