@@ -15,7 +15,7 @@
 
     # From https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/nvidia/pascal/default.nix
     nvidia.open = false;
-    nvidia.package = lib.mkDefault config.boot.kernelPackages.legacy_580;
+    nvidia.package = lib.mkDefault config.boot.kernelPackages.nvidiaPackages.legacy_580;
 
     # Whether to enable nvidia-settings, NVIDIA’s GUI configuration tool. I have this enabled but it doesn't seem to do anything.
     # nvidia.nvidiaSettings = true;
