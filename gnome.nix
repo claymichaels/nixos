@@ -72,6 +72,7 @@
         window-gap = 20;
         single-screen-gap = 14;
         maximize-with-gaps = true;
+        enable-raise-tile-group = false;
       };
       settings."org/gnome/shell/extensions/space-iflow-randomwallpaper" = {
         fetch-on-startup = true;
