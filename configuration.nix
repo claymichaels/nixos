@@ -16,6 +16,13 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # ZFS https://openzfs.github.io/openzfs-docs/Getting%20Started/NixOS/index.html
+  boot.supportedFilesystems = ["zfs"];
+  boot.zfs.forceImportRoot = false;
+  networking.hostId = "f0334327";
+  # https://wiki.nixos.org/wiki/ZFS#Guides
+  boot.zfs.devNodes = "/dev/disk/by-partuuid";
+
   networking.hostName = "nixos-pc"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
